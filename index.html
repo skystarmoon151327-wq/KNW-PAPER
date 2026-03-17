@@ -9,14 +9,12 @@
     <style>
         body { font-family: 'Noto Sans', sans-serif; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        /* 메인 배경 이미지 - 전문적인 종이 질감 사진 적용 */
         .hero-bg { 
-            background: linear-gradient(rgba(0, 40, 85, 0.85), rgba(0, 40, 85, 0.85)), 
-            url('https://images.unsplash.com/photo-1589118949245-7d38baf380d6?auto=format&fit=crop&w=1350&q=80'); 
-            background-size: cover; 
-            background-position: center; 
+            background: linear-gradient(rgba(0, 40, 85, 0.8), rgba(0, 40, 85, 0.8)), 
+            url('https://images.unsplash.com/photo-1603484477859-abe6a73f9366?q=80&w=1350&q=80'); 
+            background-size: cover; background-position: center; 
         }
-        .cert-card { transition: all 0.3s ease; border: 1px solid #f0f0f0; }
-        .cert-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: #003366; }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -27,167 +25,76 @@
                 <span class="text-xl font-bold text-blue-900 leading-none">KNW ICT Business Div.</span>
                 <span class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Korea Nanum Welfare Association</span>
             </div>
-            <nav class="hidden md:flex space-x-8 font-semibold text-xs tracking-tight">
-                <a href="#home" class="hover:text-blue-600 transition">HOME</a>
-                <a href="#products" class="hover:text-blue-600 transition">PRODUCTS</a>
-                <a href="#certifications" class="hover:text-blue-600 transition">TRUST & CERTIFIED</a>
-                <a href="#contact" class="bg-blue-900 text-white px-5 py-2 rounded shadow-md hover:bg-blue-700 transition">REQUEST QUOTE</a>
+            <nav class="hidden md:flex space-x-8 font-semibold text-xs">
+                <a href="#home" class="hover:text-blue-600">HOME</a>
+                <a href="#products" class="hover:text-blue-600">PRODUCTS</a>
+                <a href="#certifications" class="hover:text-blue-600">CERTIFIED</a>
+                <a href="#contact" class="bg-blue-900 text-white px-5 py-2 rounded">CONTACT</a>
             </nav>
         </div>
     </header>
 
-    <section id="home" class="hero-bg h-[650px] flex items-center text-white">
+    <section id="home" class="hero-bg h-[500px] flex items-center text-white text-center">
         <div class="container mx-auto px-6">
-            <div class="max-w-3xl">
-                <h2 class="text-blue-400 font-bold tracking-widest mb-2 uppercase">Global Trading Partner</h2>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-[1.1]">Eoulrim: <br>Premium Paper <br>for Every Need</h1>
-                <p class="text-xl mb-10 opacity-90 font-light leading-relaxed">
-                    Korea Nanum Welfare Association (KNW) ICT Business Division provides world-class copy paper solutions, combining social value with industrial excellence.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#products" class="bg-white text-blue-900 px-10 py-4 rounded font-bold hover:bg-gray-100 transition shadow-lg">Our Products</a>
-                    <a href="#contact" class="border-2 border-white px-10 py-4 rounded font-bold hover:bg-white hover:text-blue-900 transition">Global Inquiry</a>
-                </div>
-            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 uppercase">Eoulrim Copy Paper</h1>
+            <p class="text-xl opacity-90 mb-8">Premium Quality & Social Value for Global Partners</p>
+            <a href="#products" class="bg-white text-blue-900 px-8 py-3 rounded font-bold shadow-lg">View Products</a>
         </div>
     </section>
 
-    <section id="certifications" class="py-24 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4 uppercase">Reliability & Certification</h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">We take pride in our certified manufacturing process and social commitment, ensuring high-quality products that make a difference.</p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-                <div class="cert-card p-8 bg-white rounded-xl text-center">
-                    <div class="text-blue-600 text-3xl mb-4">🤝</div>
-                    <h4 class="font-bold text-sm text-blue-900 leading-snug">Certified Social <br>Enterprise</h4>
-                    <p class="text-[10px] text-gray-400 mt-4 uppercase font-semibold">Social Value</p>
-                </div>
-                <div class="cert-card p-8 bg-white rounded-xl text-center">
-                    <div class="text-blue-600 text-3xl mb-4">🏅</div>
-                    <h4 class="font-bold text-sm text-blue-900 leading-snug">Welfare Goods <br>Certified</h4>
-                    <p class="text-[10px] text-gray-400 mt-4 uppercase font-semibold">Quality Guaranteed</p>
-                </div>
-                <div class="cert-card p-8 bg-white rounded-xl text-center">
-                    <div class="text-blue-600 text-3xl mb-4">🏢</div>
-                    <h4 class="font-bold text-sm text-blue-900 leading-snug">Standard <br>Workplace</h4>
-                    <p class="text-[10px] text-gray-400 mt-4 uppercase font-semibold">Reliable Facility</p>
-                </div>
-                <div class="cert-card p-8 bg-white rounded-xl text-center">
-                    <div class="text-green-600 text-3xl mb-4">🍃</div>
-                    <h4 class="font-bold text-sm text-blue-900 leading-snug">Eco-Label <br>Certified</h4>
-                    <p class="text-[10px] text-gray-400 mt-4 uppercase font-semibold">Eco-Friendly</p>
-                </div>
-                <div class="cert-card p-8 bg-white rounded-xl text-center">
-                    <div class="text-blue-600 text-3xl mb-4">🏭</div>
-                    <h4 class="font-bold text-sm text-blue-900 leading-snug">In-house <br>Production</h4>
-                    <p class="text-[10px] text-gray-400 mt-4 uppercase font-semibold">Verified Maker</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="products" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold mb-12 text-blue-900 text-center uppercase tracking-tighter">Product Lineup</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group overflow-hidden border border-gray-100 rounded-lg">
-                    <div class="bg-gray-200 h-64 flex items-center justify-center text-gray-400 font-bold uppercase tracking-widest">A4 / A3 / B4</div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 uppercase">Premium Copy Paper</h3>
-                        <p class="text-sm text-gray-500 mb-4 italic">The 'Eoulrim' Standard for Office Excellence.</p>
-                        <ul class="text-xs space-y-2 text-gray-600">
-                            <li>• High Whiteness & Brightness</li>
-                            <li>• Optimized for High-speed Copiers</li>
-                            <li>• Available in A4, A3, B4 sizes</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="group overflow-hidden border border-gray-100 rounded-lg">
-                    <div class="bg-green-50 h-64 flex items-center justify-center text-green-600 font-bold uppercase tracking-widest">Eco-Line</div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 uppercase text-green-700">Eco-Friendly Series</h3>
-                        <p class="text-sm text-gray-500 mb-4 italic">Sustainable solutions for a greener future.</p>
-                        <ul class="text-xs space-y-2 text-gray-600">
-                            <li>• Environmentally Friendly Certification</li>
-                            <li>• Reduced Carbon Footprint</li>
-                            <li>• High-quality recycled content options</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="group overflow-hidden border border-gray-100 rounded-lg">
-                    <div class="bg-yellow-50 h-64 flex items-center justify-center text-yellow-600 font-bold uppercase tracking-widest">Specialty</div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 uppercase">Tinted & Specialty</h3>
-                        <p class="text-sm text-gray-500 mb-4 italic">Comfort and versatility in every page.</p>
-                        <ul class="text-xs space-y-2 text-gray-600">
-                            <li>• Tinted Paper for Eye Comfort</li>
-                            <li>• Medium-Grade Paper Solutions</li>
-                            <li>• Consistent Quality for Bulk Printing</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-blue-50">
+    <section id="certifications" class="py-16 bg-gray-50">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold text-blue-900 mb-8 uppercase">Why Choose Eoulrim?</h2>
-            <div class="grid md:grid-cols-3 gap-12 text-left">
-                <div class="flex gap-4">
-                    <div class="text-2xl text-blue-600">📦</div>
-                    <div>
-                        <h5 class="font-bold mb-2">Mass Production</h5>
-                        <p class="text-sm text-gray-600 leading-relaxed">Stable supply capacity managed by our specialized ICT business division.</p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <div class="text-2xl text-blue-600">🚢</div>
-                    <div>
-                        <h5 class="font-bold mb-2">Global Shipping</h5>
-                        <p class="text-sm text-gray-600 leading-relaxed">Expertise in international logistics and secure pallet packaging.</p>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <div class="text-2xl text-blue-600">📜</div>
-                    <div>
-                        <h5 class="font-bold mb-2">Government Certified</h5>
-                        <p class="text-sm text-gray-600 leading-relaxed">Officially verified by the Korean government for direct production.</p>
-                    </div>
-                </div>
+            <h2 class="text-2xl font-bold mb-10 text-blue-900 uppercase">Our Trusted Certifications</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="p-4 bg-white rounded shadow-sm text-xs font-bold">Social Enterprise</div>
+                <div class="p-4 bg-white rounded shadow-sm text-xs font-bold">Welfare Goods</div>
+                <div class="p-4 bg-white rounded shadow-sm text-xs font-bold">Standard Workplace</div>
+                <div class="p-4 bg-white rounded shadow-sm text-xs font-bold font-bold text-green-600">Eco-Label</div>
+                <div class="p-4 bg-white rounded shadow-sm text-xs font-bold">Direct Production</div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="bg-blue-900 text-white py-20">
+    <section id="products" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-20">
-                <div>
-                    <h2 class="text-4xl font-bold mb-6 uppercase">Get in Touch</h2>
-                    <p class="text-blue-300 mb-10 leading-relaxed">Interested in importing Eoulrim Copy Paper? <br>Our global sales team is ready to discuss your requirements.</p>
-                    <div class="space-y-4 text-sm">
-                        <p><span class="font-bold text-white uppercase tracking-wider block mb-1">Office Name</span> Korea Nanum Welfare Association ICT Business Division</p>
-                        <p><span class="font-bold text-white uppercase tracking-wider block mb-1">Brand</span> Eoulrim Copy Paper (어울림 복사용지)</p>
+            <h2 class="text-3xl font-bold text-center mb-12 uppercase">Product Lineup</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="border rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?auto=format&fit=crop&w=600&q=80" 
+                         class="w-full h-48 object-cover" alt="Premium Copy Paper">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">A4/A3/B4 Premium</h3>
+                        <p class="text-xs text-gray-500">High whiteness & Jam-free performance.</p>
                     </div>
                 </div>
-                <div class="bg-white p-8 rounded shadow-2xl">
-                    <form class="space-y-4">
-                        <input type="text" placeholder="Full Name / Company Name" class="w-full p-4 border rounded text-gray-800 text-sm focus:outline-blue-600">
-                        <input type="email" placeholder="Business Email Address" class="w-full p-4 border rounded text-gray-800 text-sm focus:outline-blue-600">
-                        <textarea placeholder="Tell us about your order quantity (A4/A3/B4 etc.)" rows="4" class="w-full p-4 border rounded text-gray-800 text-sm focus:outline-blue-600"></textarea>
-                        <button class="w-full bg-blue-600 text-white font-bold py-4 rounded hover:bg-blue-700 transition uppercase tracking-widest">Send Inquiry</button>
-                    </form>
+
+                <div class="border rounded-lg overflow-hidden shadow-sm border-green-100">
+                    <img src="https://images.unsplash.com/photo-1593693405335-95027581699f?auto=format&fit=crop&w=600&q=80" 
+                         class="w-full h-48 object-cover" alt="Eco-Friendly Paper">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2 text-green-700">Eco-Friendly Line</h3>
+                        <p class="text-xs text-gray-500">Certified sustainable green solutions.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mt-20 pt-8 border-t border-blue-800 text-center text-[10px] text-blue-400 uppercase tracking-widest">
-                © 2026 KNW ICT Business Division. All Rights Reserved.
+
+                <div class="border rounded-lg overflow-hidden shadow-sm border-yellow-100">
+                    <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=600&q=80" 
+                         class="w-full h-48 object-cover" alt="Specialty Paper">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">Specialty & Tinted</h3>
+                        <p class="text-xs text-gray-500">Eye-care tinted and versatile medium-grade.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </section>
+
+    <footer id="contact" class="bg-blue-900 text-white py-16 text-center">
+        <h2 class="text-3xl font-bold mb-4 uppercase">Contact Us</h2>
+        <p class="mb-8 opacity-80 italic">Global Sales: Korea Nanum Welfare Association ICT Business Division</p>
+        <p class="text-sm">Copyright © 2026 KNW ICT Business Div. All Rights Reserved.</p>
     </footer>
 
 </body>
