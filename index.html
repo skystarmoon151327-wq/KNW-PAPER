@@ -14,9 +14,32 @@
             url('https://i.ibb.co/PZNp3Kwg/image.jpg'); 
             background-size: cover; background-position: center; 
         }
-        .img-container { display: flex; justify-content: center; align-items: center; overflow: hidden; background-color: #f9fafb; }
-        .product-img { max-width: 100%; max-height: 250px; object-fit: contain; }
-        .cert-img { max-width: 100%; max-height: 200px; object-fit: contain; }
+        /* 이미지 크기 자동 조정을 위한 스타일 */
+        .img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: #f9fafb;
+            height: 250px; /* 칸 높이 고정 */
+        }
+        .product-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* 비율 유지하며 칸 안에 맞춤 */
+        }
+        .cert-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 220px;
+            background-color: white;
+        }
+        .cert-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -31,52 +54,109 @@
                 <a href="#home" class="hover:text-blue-600">HOME</a>
                 <a href="#products" class="hover:text-blue-600">PRODUCTS</a>
                 <a href="#certifications" class="hover:text-blue-600">CERTIFICATIONS</a>
-                <a href="#inquiry" class="bg-blue-900 text-white px-5 py-2 rounded hover:bg-blue-800 transition">INQUIRY</a>
+                <a href="#inquiry" class="bg-blue-900 text-white px-5 py-2 rounded hover:bg-blue-800 transition shadow-md">INQUIRY</a>
             </nav>
         </div>
     </header>
 
-    <section id="home" class="hero-bg h-[500px] flex items-center text-white text-center">
+    <section id="home" class="hero-bg h-[550px] flex items-center text-white text-center">
         <div class="container mx-auto px-6">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 uppercase">Eoulrim Copy Paper</h1>
-            <p class="text-xl opacity-90 mb-10 tracking-wide">Premium Quality & Social Value for Global Partners</p>
-            <a href="#inquiry" class="bg-blue-600 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">Send Inquiry Now</a>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 uppercase tracking-tight">Eoulrim Copy Paper</h1>
+            <p class="text-xl md:text-2xl opacity-90 mb-10 max-w-3xl mx-auto tracking-wide">Premium Quality & Social Value. Directly Produced in Korea.</p>
+            <a href="#inquiry" class="bg-blue-600 text-white px-10 py-4 rounded-full font-bold shadow-lg hover:bg-blue-700 transition-all text-lg">Send Inquiry Now</a>
         </div>
     </section>
 
-    <section id="inquiry" class="py-24 bg-white border-t">
+    <section id="products" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-wider text-gray-900">Product Portfolio</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="img-container border rounded-xl shadow-sm p-2"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="product-img" alt="Product"></div>
+                <div class="img-container border rounded-xl shadow-sm p-2"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="product-img" alt="Product"></div>
+                <div class="img-container border rounded-xl shadow-sm p-2"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="product-img" alt="Product"></div>
+                <div class="img-container border rounded-xl shadow-sm p-2"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="product-img" alt="Product"></div>
+                <div class="img-container border rounded-xl shadow-sm p-2"><img src="https://i.ibb.co/pjTFHC25/image.jpg" class="product-img" alt="Product"></div>
+                <div class="img-container border rounded-xl shadow-sm p-2"><img src="https://i.ibb.co/5WLRpjGj/image.jpg" class="product-img" alt="Product"></div>
+                <div class="img-container border rounded-xl shadow-sm p-2"><img src="https://i.ibb.co/rKvp6vsn/image.jpg" class="product-img" alt="Product"></div>
+                <div class="bg-gray-100 rounded-xl flex items-center justify-center p-6 text-center border border-dashed border-gray-300">
+                    <p class="text-xs font-bold text-gray-500 uppercase">Eoulrim <br>Premium Line</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="py-20 bg-gray-50 border-t border-b">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 uppercase tracking-wider text-blue-900">Our Certifications</h2>
+            <p class="text-center text-gray-500 mb-12 italic">Government-assured quality and social responsibility</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                <div class="cert-container shadow-md rounded-lg p-4 border hover:scale-105 transition-transform"><img src="https://i.ibb.co/dxhvGmy/image.jpg" class="cert-img" alt="Cert"></div>
+                <div class="cert-container shadow-md rounded-lg p-4 border hover:scale-105 transition-transform"><img src="https://i.ibb.co/My7K8k5t/image.jpg" class="cert-img" alt="Cert"></div>
+                <div class="cert-container shadow-md rounded-lg p-4 border hover:scale-105 transition-transform"><img src="https://i.ibb.co/YMN9F6Z/image.jpg" class="cert-img" alt="Cert"></div>
+                <div class="cert-container shadow-md rounded-lg p-4 border hover:scale-105 transition-transform"><img src="https://i.ibb.co/Dg1bTLn5/image.jpg" class="cert-img" alt="Cert"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry" class="py-24 bg-white">
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold mb-4 text-blue-900 uppercase">Inquiry Form</h2>
-                <p class="text-gray-500">Please fill out the form below for product quantities and quotes.</p>
+                <div class="w-20 h-1 bg-blue-900 mx-auto mb-6"></div>
+                <p class="text-gray-600">Please provide your details and product requirements for a quote.</p>
             </div>
             
-            <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-8 rounded-2xl shadow-inner border">
+            <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-10 rounded-3xl shadow-sm border">
                 <div>
-                    <label class="block text-sm font-bold mb-2 uppercase">Your Name / Company</label>
-                    <input type="text" name="company" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:border-blue-900">
+                    <label class="block text-xs font-bold mb-2 uppercase text-gray-500">Name / Company</label>
+                    <input type="text" name="company" required class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-900 outline-none transition">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold mb-2 uppercase">Your Email Address</label>
-                    <input type="email" name="_replyto" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:border-blue-900">
+                    <label class="block text-xs font-bold mb-2 uppercase text-gray-500">Email Address</label>
+                    <input type="email" name="_replyto" required class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-900 outline-none transition">
                 </div>
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-bold mb-2 uppercase">Subject (Product Name / Quantity)</label>
-                    <input type="text" name="subject" placeholder="e.g., A4 80gsm / 20 Pallets" required class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:border-blue-900">
+                    <label class="block text-xs font-bold mb-2 uppercase text-gray-500">Subject (Product & Quantity)</label>
+                    <input type="text" name="subject" placeholder="e.g., Request for A4 80gsm / 2,000 Boxes" required class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-900 outline-none transition">
                 </div>
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-bold mb-2 uppercase">Message Details</label>
-                    <textarea name="message" rows="5" required placeholder="Describe your requirements..." class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:border-blue-900"></textarea>
+                    <label class="block text-xs font-bold mb-2 uppercase text-gray-500">Message</label>
+                    <textarea name="message" rows="5" required placeholder="Tell us more about your needs..." class="w-full p-3 rounded-lg border border-gray-300 focus:border-blue-900 outline-none transition"></textarea>
                 </div>
                 <div class="md:col-span-2 text-center mt-4">
-                    <button type="submit" class="bg-blue-900 text-white px-12 py-4 rounded-full font-bold text-lg hover:bg-black transition-all shadow-xl">SUBMIT INQUIRY</button>
+                    <button type="submit" class="bg-blue-900 text-white px-16 py-4 rounded-full font-bold text-lg hover:bg-black transition-all shadow-xl uppercase tracking-widest">Submit Inquiry</button>
                 </div>
             </form>
         </div>
     </section>
 
     <footer id="contact" class="bg-slate-900 text-white py-20">
-        </footer>
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl font-bold mb-8 uppercase tracking-widest">Contact Info</h2>
+                    <p class="text-xl font-bold text-blue-300 mb-8 leading-tight">
+                        Korea Nanum Welfare Association (KNW) <br> ICT Business Division
+                    </p>
+                    <div class="space-y-4 text-gray-400">
+                        <p class="flex items-center"><strong class="w-24 text-white uppercase text-xs">Email:</strong> <a href="mailto:nanoom@nanoom114.com" class="hover:text-blue-400">nanoom@nanoom114.com</a></p>
+                        <p class="flex items-center"><strong class="w-24 text-white uppercase text-xs">Tel:</strong> <a href="tel:+82-44-863-3900" class="hover:text-blue-400">+82-44-863-3900</a></p>
+                        <p class="flex items-center"><strong class="w-24 text-white uppercase text-xs">Fax:</strong> +82-44-863-3930</p>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-10 rounded-3xl border border-slate-700">
+                    <h3 class="font-bold mb-4 text-white uppercase tracking-wider">Manufacturing Facility</h3>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        52, Bugeosil-gil, Jeonui-myeon, Sejong-si, <br>
+                        Republic of Korea (Zip: 30004)
+                    </p>
+                    <div class="text-[10px] text-gray-500 pt-8 border-t border-slate-700 tracking-widest">
+                        COPYRIGHT © 2026 KNW ICT BUSINESS DIV. ALL RIGHTS RESERVED.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
