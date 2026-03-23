@@ -15,38 +15,38 @@
             background-size: cover; background-position: center; 
         }
 
-        /* [핵심 수정] 이미지 컨테이너: 이미지가 절대 잘리지 않게 설정 */
+        /* 이미지 컨테이너 공통 스타일 */
         .img-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffffff; /* 로고 배경과 통일 */
+            background-color: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             overflow: hidden;
-            padding: 25px; /* 글자가 테두리에 붙지 않게 여백을 넉넉히 줌 */
-            height: 280px; /* 칸 높이 고정 */
+            padding: 20px; 
             width: 100%;
         }
 
-        /* [핵심 수정] 이미지 자체 설정: 비율 유지하며 칸 안에 쏙 들어가게 */
+        /* 제품 사진 설정: 높이 280px */
+        .product-wrapper { height: 280px; }
+        
+        /* 인증 로고 설정: 높이 140px (제품의 50% 크기) */
+        .cert-wrapper { height: 140px; padding: 15px; }
+
+        /* 이미지 자체 설정: 비율 유지하며 칸 안에 쏙 들어가게 */
         .fit-img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain !important; /* 이 설정이 '절대 안 잘리게' 만듭니다 */
+            object-fit: contain !important; /* 절대 안 잘리게 하는 핵심 설정 */
             width: auto;
             height: auto;
-        }
-
-        /* 인증서 칸은 로고 특성상 높이를 살짝 조절 */
-        .cert-wrapper {
-            height: 240px;
         }
     </style>
 </head>
 <body class="bg-white text-gray-800">
 
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex flex-col text-blue-900">
                 <span class="text-xl font-bold leading-none">KNW ICT Business Div.</span>
@@ -71,35 +71,35 @@
 
     <section id="products" class="py-20 bg-white">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12 uppercase tracking-wider">Product Gallery</h2>
+            <h2 class="text-3xl font-bold mb-12 uppercase tracking-wider underline border-b-2 border-blue-900 inline-block pb-1">Product Gallery</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="img-wrapper shadow-sm"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img" alt="Product"></div>
-                <div class="img-wrapper shadow-sm"><img src="https://i.ibb.co/hR4Y1dLZ/fit-img" class="fit-img" alt="Product"></div>
-                <div class="img-wrapper shadow-sm"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img" alt="Product"></div>
-                <div class="img-wrapper shadow-sm"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="fit-img" alt="Product"></div>
-                <div class="img-wrapper shadow-sm"><img src="https://i.ibb.co/pjTFHC25/image.jpg" class="fit-img" alt="Product"></div>
-                <div class="img-wrapper shadow-sm"><img src="https://i.ibb.co/5WLRpjGj/image.jpg" class="fit-img" alt="Product"></div>
-                <div class="img-wrapper shadow-sm"><img src="https://i.ibb.co/rKvp6vsn/image.jpg" class="fit-img" alt="Product"></div>
-                <div class="img-wrapper bg-blue-50 border-dashed border-blue-200"><p class="text-blue-900 font-bold text-sm uppercase">Certified <br>Quality</p></div>
+                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img" alt="Product 1"></div>
+                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="fit-img" alt="Product 2"></div>
+                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img" alt="Product 3"></div>
+                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="fit-img" alt="Product 4"></div>
+                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/pjTFHC25/image.jpg" class="fit-img" alt="Product 5"></div>
+                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/5WLRpjGj/image.jpg" class="fit-img" alt="Product 6"></div>
+                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/rKvp6vsn/image.jpg" class="fit-img" alt="Product 7"></div>
+                <div class="img-wrapper product-wrapper bg-blue-50 border-dashed border-blue-200"><p class="text-blue-900 font-bold text-sm uppercase">Certified <br>Quality</p></div>
             </div>
         </div>
     </section>
 
     <section id="certifications" class="py-20 bg-gray-50 border-t border-b">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-wider text-blue-900">Professional Certifications</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                <div class="img-wrapper cert-wrapper shadow-md"><img src="https://i.ibb.co/dxhvGmy/image.jpg" class="fit-img" alt="Eco-friendly"></div>
-                <div class="img-wrapper cert-wrapper shadow-md"><img src="https://i.ibb.co/My7K8k5t/image.jpg" class="fit-img" alt="Ggumdeurae"></div>
-                <div class="img-wrapper cert-wrapper shadow-md"><img src="https://i.ibb.co/YMN9F6Z/image.jpg" class="fit-img" alt="Social Enterprise"></div>
-                <div class="img-wrapper cert-wrapper shadow-md"><img src="https://i.ibb.co/Dg1bTLn5/image.jpg" class="fit-img" alt="Standard Workplace"></div>
+            <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-wider text-blue-900 border-b-2 border-blue-900 inline-block pb-1">Professional Certifications</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-10">
+                <div class="img-wrapper cert-wrapper shadow-md rounded-xl hover:scale-105 transition-transform"><img src="https://i.ibb.co/dxhvGmy/image.jpg" class="fit-img" alt="Certification 1"></div>
+                <div class="img-wrapper cert-wrapper shadow-md rounded-xl hover:scale-105 transition-transform"><img src="https://i.ibb.co/My7K8k5t/image.jpg" class="fit-img" alt="Certification 2"></div>
+                <div class="img-wrapper cert-wrapper shadow-md rounded-xl hover:scale-105 transition-transform"><img src="https://i.ibb.co/YMN9F6Z/image.jpg" class="fit-img" alt="Certification 3"></div>
+                <div class="img-wrapper cert-wrapper shadow-md rounded-xl hover:scale-105 transition-transform"><img src="https://i.ibb.co/Dg1bTLn5/image.jpg" class="fit-img" alt="Certification 4"></div>
             </div>
         </div>
     </section>
 
     <section id="inquiry" class="py-24 bg-white">
         <div class="container mx-auto px-6 max-w-4xl">
-            <h2 class="text-4xl font-bold text-center mb-12 uppercase text-blue-900">Inquiry Form</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 uppercase text-blue-900 font-sans">Inquiry</h2>
             <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-10 rounded-3xl border shadow-sm">
                 <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Company Name</label><input type="text" name="company" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-900 outline-none"></div>
                 <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Email Address</label><input type="email" name="_replyto" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-900 outline-none"></div>
@@ -109,7 +109,7 @@
         </div>
     </section>
 
-    <footer id="contact" class="bg-slate-900 text-white py-20">
+    <footer id="contact" class="bg-slate-900 text-white py-20 border-t border-slate-800">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16">
                 <div>
@@ -117,8 +117,8 @@
                     <p class="text-xl font-bold mb-6">Korea Nanum Welfare Association (KNW) <br> ICT Business Division</p>
                     <p class="text-sm text-gray-400">Email: nanoom@nanoom114.com | Tel: +82-44-863-3900</p>
                 </div>
-                <div class="bg-slate-800 p-10 rounded-3xl border border-slate-700">
-                    <p class="text-gray-300">52, Bugeosil-gil, Jeonui-myeon, Sejong-si, <br> Republic of Korea (Zip: 30004)</p>
+                <div class="bg-slate-800 p-10 rounded-3xl border border-slate-700 text-gray-300">
+                    <p>52, Bugeosil-gil, Jeonui-myeon, Sejong-si, Republic of Korea (Zip: 30004)</p>
                     <div class="mt-8 pt-8 border-t border-slate-700 text-[10px] text-gray-500 tracking-widest uppercase">Copyright © 2026 KNW ICT Business Div. All Rights Reserved.</div>
                 </div>
             </div>
@@ -126,4 +126,4 @@
     </footer>
 
 </body>
-</html
+</html>
