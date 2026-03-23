@@ -10,7 +10,6 @@
         body { font-family: 'Noto Sans', sans-serif; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
         
-        /* 메인 히어로 배경 */
         .hero-bg { 
             background: linear-gradient(rgba(0, 40, 85, 0.6), rgba(0, 40, 85, 0.6)), 
             url('https://i.ibb.co/RTy2j12t/image.jpg'); 
@@ -44,18 +43,18 @@
         /* 제품 이미지 규격 */
         .product-wrapper { height: 260px; padding: 15px; }
 
-        /* [최종 수정] 4개 인증 로고 모두 동일하게 적용 (글자 잘림 방지 높이) */
+        /* [핵심 수정] 4개 인증 로고 모두 동일하게 적용 - 글자 잘림 완벽 방지 */
         .cert-wrapper { 
-            height: 140px; 
-            padding: 15px; 
+            height: 180px; /* 로고가 충분히 크게 보일 수 있도록 높이 상향 */
+            padding: 20px; /* 상하좌우 여백을 주어 글자가 테두리에 닿지 않게 함 */
             background-color: #fff;
         }
 
-        /* 모든 이미지가 비율을 유지하며 컨테이너 안에 쏙 들어가게 설정 */
+        /* 로고 이미지가 박스 안에서 전체 노출되도록 강제 설정 */
         .fit-img { 
-            max-width: 95%; 
-            max-height: 95%; 
-            object-fit: contain !important; 
+            width: 100%;
+            height: 100%;
+            object-fit: contain !important; /* 비율 유지하며 박스 안에 전체 이미지 표시 */
             display: block;
         }
 
@@ -75,8 +74,8 @@
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex flex-col text-blue-900">
-                <span class="text-xl font-bold leading-none">KNW ICT Business Div.</span>
-                <span class="text-[10px] uppercase tracking-widest mt-1 opacity-70">Korea Nanum Welfare Association</span>
+                <span class="text-xl font-bold leading-none uppercase tracking-tight">Eoulrim Copy Paper</span>
+                <span class="text-[10px] uppercase tracking-widest mt-1 opacity-70">KNW ICT Business Division</span>
             </div>
             <nav class="hidden md:flex space-x-8 font-semibold text-xs uppercase tracking-wider">
                 <a href="#home" class="hover:text-blue-600 transition">Home</a>
@@ -89,9 +88,9 @@
 
     <section id="home" class="hero-bg h-[450px] flex items-center text-white text-center">
         <div class="container mx-auto px-6">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 uppercase tracking-tight">Eoulrim Copy Paper</h1>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 uppercase tracking-tight italic">Eoulrim</h1>
             <p class="text-xl opacity-90 mb-8 font-light text-blue-50">Premium Quality & Social Value for Global Partners</p>
-            <a href="#inquiry" class="bg-blue-600 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">Send Inquiry</a>
+            <a href="#inquiry" class="bg-blue-600 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">Send Inquiry Now</a>
         </div>
     </section>
 
@@ -117,21 +116,21 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold mb-12 uppercase tracking-widest text-blue-900">Professional Certifications</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/mrWSwXtH/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/cKYFh2Fm/image.jpg" class="fit-img"></div>
                 <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/5g11bWQ0/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/cKYFh2Fm/image.jpg" class="fit-img"></div>
                 <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/39Xm89YQ/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/mrWSwXtH/image.jpg" class="fit-img"></div>
             </div>
         </div>
     </section>
 
     <section id="inquiry" class="py-24 bg-white">
         <div class="container mx-auto px-6 max-w-4xl text-center">
-            <h2 class="text-4xl font-bold mb-12 uppercase text-blue-900 tracking-widest">Inquiry</h2>
+            <h2 class="text-4xl font-bold mb-12 uppercase text-blue-900 tracking-widest">Global Inquiry</h2>
             <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-10 rounded-3xl border text-left shadow-sm">
                 <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Company Name</label><input type="text" name="company" required class="w-full p-3 border rounded-lg outline-none focus:border-blue-900"></div>
                 <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Email Address</label><input type="email" name="_replyto" required class="w-full p-3 border rounded-lg outline-none focus:border-blue-900"></div>
-                <div class="md:col-span-2"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Message</label><textarea name="message" rows="5" required placeholder="Quantity, Specification, etc." class="w-full p-3 border rounded-lg outline-none focus:border-blue-900"></textarea></div>
+                <div class="md:col-span-2"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Message</label><textarea name="message" rows="5" required placeholder="Detailed specifications, quantity, etc." class="w-full p-3 border rounded-lg outline-none focus:border-blue-900"></textarea></div>
                 <div class="md:col-span-2 text-center mt-4"><button type="submit" class="bg-blue-900 text-white px-16 py-4 rounded-full font-bold shadow-xl hover:bg-black transition-all uppercase tracking-widest">Submit Inquiry</button></div>
             </form>
         </div>
