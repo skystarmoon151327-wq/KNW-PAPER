@@ -9,15 +9,13 @@
     <style>
         body { font-family: 'Noto Sans', sans-serif; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
-        
-        /* 메인 배너 배경 */
         .hero-bg { 
             background: linear-gradient(rgba(0, 40, 85, 0.6), rgba(0, 40, 85, 0.6)), 
-            url('https://i.ibb.co/PZNp3Kwg/image.jpg'); 
+            url('https://i.ibb.co/RTy2j12t/image.jpg'); 
             background-size: cover; background-position: center; 
         }
 
-        /* 이미지 컨테이너 공통 스타일 */
+        /* 이미지 컨테이너 스타일 */
         .img-wrapper {
             display: flex;
             justify-content: center;
@@ -31,51 +29,27 @@
             position: relative;
         }
         .img-wrapper:hover { transform: translateY(-5px); border-color: #1e3a8a; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-        
-        /* 돋보기 안내 표시 */
         .img-wrapper::after {
-            content: '🔍 Zoom';
-            position: absolute;
-            bottom: 8px;
-            right: 10px;
-            font-size: 9px;
-            color: #64748b;
-            background: rgba(255,255,255,0.8);
-            padding: 2px 6px;
-            border-radius: 4px;
-            opacity: 0;
-            transition: opacity 0.3s;
+            content: '🔍 Click to Zoom';
+            position: absolute; bottom: 8px; right: 10px; font-size: 9px;
+            color: #64748b; background: rgba(255,255,255,0.8);
+            padding: 2px 6px; border-radius: 4px; opacity: 0; transition: opacity 0.3s;
         }
         .img-wrapper:hover::after { opacity: 1; }
 
-        /* 제품 및 인증 이미지 높이 설정 */
         .product-wrapper { height: 260px; padding: 15px; }
+        /* 인증서 섹션 50% 축소 (높이 100px) */
         .cert-wrapper { height: 100px; padding: 10px; }
 
-        /* 이미지 비율 유지 설정 */
-        .fit-img { max-width: 100%; max-height: 100%; object-fit: contain !important; width: auto; height: auto; }
+        .fit-img { max-width: 100%; max-height: 100%; object-fit: contain !important; }
 
-        /* 확대 모달(Lightbox) */
+        /* 확대 모달 스타일 */
         #imgModal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            cursor: zoom-out;
+            display: none; position: fixed; z-index: 9999; top: 0; left: 0;
+            width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center; align-items: center; cursor: zoom-out;
         }
-        #modalImg {
-            max-width: 90%;
-            max-height: 85%;
-            border: 3px solid white;
-            border-radius: 4px;
-            animation: zoom 0.3s ease-out;
-        }
+        #modalImg { max-width: 90%; max-height: 85%; border: 3px solid white; border-radius: 4px; animation: zoom 0.3s ease; }
         @keyframes zoom { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
         .close-text { position: absolute; top: 20px; color: white; font-size: 14px; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px; }
     </style>
@@ -100,35 +74,37 @@
     <section id="home" class="hero-bg h-[450px] flex items-center text-white text-center">
         <div class="container mx-auto px-6">
             <h1 class="text-5xl md:text-7xl font-bold mb-4 uppercase tracking-tight">Eoulrim Copy Paper</h1>
-            <p class="text-xl opacity-90 mb-8 font-light tracking-wide">Premium Quality & Social Value for Global Partners</p>
+            <p class="text-xl opacity-90 mb-8 font-light">Premium Quality & Social Value for Global Partners</p>
             <a href="#inquiry" class="bg-blue-600 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">Send Inquiry</a>
         </div>
     </section>
 
-    <section id="products" class="py-20">
+    <section id="products" class="py-24">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12 uppercase tracking-wider text-blue-900">Product Portfolio</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/PZNp3Kwg/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/5WzdRyTJ/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/pjTFHC25/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/5WLRpjGj/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/rKvp6vsn/image.jpg" class="fit-img"></div>
+            <h2 class="text-3xl font-bold mb-16 uppercase tracking-widest text-blue-900 border-b-2 border-blue-900 inline-block pb-2">Product Portfolio</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="img-wrapper product-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/RTy2j12t/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper product-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper product-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper product-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper product-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper product-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/N6Mj3TqQ/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper product-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/nqcr5fTy/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper product-wrapper bg-blue-50 border-dashed border-blue-200 flex-col">
+                    <p class="text-blue-900 font-bold text-xs uppercase tracking-tight">Premium<br>Eco-Friendly<br>A4 Paper</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="certifications" class="py-20 bg-gray-50 border-t border-b text-center">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 uppercase tracking-wider text-blue-900">Professional Certifications</h2>
+            <h2 class="text-3xl font-bold mb-12 uppercase tracking-widest text-blue-900">Professional Certifications</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/5gH5Mhxz/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/27b2zBKW/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/V0WmvbST/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/Pv4Wx5dz/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/mrWSwXtH/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/cKYFh2Fm/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/5g11bWQ0/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/39Xm89YQ/image.jpg" class="fit-img"></div>
             </div>
         </div>
     </section>
@@ -169,4 +145,4 @@
     </script>
 
 </body>
-</html
+</html>
