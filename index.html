@@ -15,7 +15,7 @@
             background-size: cover; background-position: center; 
         }
 
-        /* 이미지 컨테이너 공통 스타일 */
+        /* 이미지 컨테이너: 기본적으로 안 잘리게 설정 */
         .img-wrapper {
             display: flex;
             justify-content: center;
@@ -24,23 +24,64 @@
             border: 1px solid #e2e8f0;
             border-radius: 12px;
             overflow: hidden;
-            padding: 20px; 
-            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
         }
-
-        /* 제품 사진 설정: 높이 280px */
-        .product-wrapper { height: 280px; }
+        .img-wrapper:hover { transform: translateY(-5px); border-color: #1e3a8a; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
         
-        /* 인증 로고 설정: 높이 140px (제품의 50% 크기) */
-        .cert-wrapper { height: 140px; padding: 15px; }
+        /* 돋보기 아이콘 표시 */
+        .img-wrapper::after {
+            content: '🔍 Click to Enlarge';
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            font-size: 9px;
+            color: #64748b;
+            background: rgba(255,255,255,0.8);
+            padding: 2px 6px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .img-wrapper:hover::after { opacity: 1; }
 
-        /* 이미지 자체 설정: 비율 유지하며 칸 안에 쏙 들어가게 */
-        .fit-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain !important; /* 절대 안 잘리게 하는 핵심 설정 */
-            width: auto;
-            height: auto;
+        .product-wrapper { height: 260px; padding: 15px; }
+        .cert-wrapper { height: 160px; padding: 20px; }
+
+        .fit-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        /* --- 확대 모달(Lightbox) 스타일 --- */
+        #imgModal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        #modalImg {
+            max-width: 90%;
+            max-height: 85%;
+            border: 3px solid white;
+            border-radius: 4px;
+            animation: zoom 0.3s;
+        }
+        @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
+        .close-text {
+            position: absolute;
+            top: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
         }
     </style>
 </head>
@@ -61,69 +102,79 @@
         </div>
     </header>
 
-    <section id="home" class="hero-bg h-[500px] flex items-center text-white text-center">
+    <section id="home" class="hero-bg h-[400px] flex items-center text-white text-center">
         <div class="container mx-auto px-6">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 uppercase tracking-tight">Eoulrim Copy Paper</h1>
-            <p class="text-xl opacity-90 mb-10">Premium Quality & Social Value for Global Partners</p>
-            <a href="#inquiry" class="bg-blue-600 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">Contact Us Now</a>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 uppercase tracking-tight">Eoulrim Copy Paper</h1>
+            <p class="text-xl opacity-90 mb-8">Premium Quality & Social Value for Global Partners</p>
+            <a href="#inquiry" class="bg-blue-600 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">Send Inquiry</a>
         </div>
     </section>
 
-    <section id="products" class="py-20 bg-white">
+    <section id="products" class="py-20">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12 uppercase tracking-wider underline border-b-2 border-blue-900 inline-block pb-1">Product Gallery</h2>
+            <h2 class="text-3xl font-bold mb-12 uppercase tracking-wider text-blue-900">Product Portfolio</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img" alt="Product 1"></div>
-                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="fit-img" alt="Product 2"></div>
-                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img" alt="Product 3"></div>
-                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="fit-img" alt="Product 4"></div>
-                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/pjTFHC25/image.jpg" class="fit-img" alt="Product 5"></div>
-                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/5WLRpjGj/image.jpg" class="fit-img" alt="Product 6"></div>
-                <div class="img-wrapper product-wrapper shadow-sm"><img src="https://i.ibb.co/rKvp6vsn/image.jpg" class="fit-img" alt="Product 7"></div>
-                <div class="img-wrapper product-wrapper bg-blue-50 border-dashed border-blue-200"><p class="text-blue-900 font-bold text-sm uppercase">Certified <br>Quality</p></div>
+                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img" alt="Product 1"></div>
+                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="fit-img" alt="Product 2"></div>
+                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img" alt="Product 3"></div>
+                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="fit-img" alt="Product 4"></div>
+                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/pjTFHC25/image.jpg" class="fit-img" alt="Product 5"></div>
+                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/5WLRpjGj/image.jpg" class="fit-img" alt="Product 6"></div>
+                <div class="img-wrapper product-wrapper" onclick="openModal(this)"><img src="https://i.ibb.co/rKvp6vsn/image.jpg" class="fit-img" alt="Product 7"></div>
+                <div class="img-wrapper product-wrapper bg-blue-50 border-dashed border-blue-200 flex-col">
+                    <p class="text-blue-900 font-bold text-xs">PREMIUM<br>A4 PAPER</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="certifications" class="py-20 bg-gray-50 border-t border-b">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-wider text-blue-900 border-b-2 border-blue-900 inline-block pb-1">Professional Certifications</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-10">
-                <div class="img-wrapper cert-wrapper shadow-md rounded-xl hover:scale-105 transition-transform"><img src="https://i.ibb.co/dxhvGmy/image.jpg" class="fit-img" alt="Certification 1"></div>
-                <div class="img-wrapper cert-wrapper shadow-md rounded-xl hover:scale-105 transition-transform"><img src="https://i.ibb.co/My7K8k5t/image.jpg" class="fit-img" alt="Certification 2"></div>
-                <div class="img-wrapper cert-wrapper shadow-md rounded-xl hover:scale-105 transition-transform"><img src="https://i.ibb.co/YMN9F6Z/image.jpg" class="fit-img" alt="Certification 3"></div>
-                <div class="img-wrapper cert-wrapper shadow-md rounded-xl hover:scale-105 transition-transform"><img src="https://i.ibb.co/Dg1bTLn5/image.jpg" class="fit-img" alt="Certification 4"></div>
+            <h2 class="text-3xl font-bold text-center mb-12 uppercase tracking-wider text-blue-900">Professional Certifications</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/dxhvGmy/image.jpg" class="fit-img" alt="Cert 1"></div>
+                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/My7K8k5t/image.jpg" class="fit-img" alt="Cert 2"></div>
+                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/YMN9F6Z/image.jpg" class="fit-img" alt="Cert 3"></div>
+                <div class="img-wrapper cert-wrapper shadow-md" onclick="openModal(this)"><img src="https://i.ibb.co/Dg1bTLn5/image.jpg" class="fit-img" alt="Cert 4"></div>
             </div>
         </div>
     </section>
 
     <section id="inquiry" class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <h2 class="text-4xl font-bold text-center mb-12 uppercase text-blue-900 font-sans">Inquiry</h2>
-            <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-10 rounded-3xl border shadow-sm">
-                <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Company Name</label><input type="text" name="company" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-900 outline-none"></div>
-                <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Email Address</label><input type="email" name="_replyto" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-900 outline-none"></div>
-                <div class="md:col-span-2"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Inquiry Message</label><textarea name="message" rows="5" required placeholder="Quantity, Destination, etc." class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-900 outline-none"></textarea></div>
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-4xl font-bold mb-12 uppercase text-blue-900 tracking-widest">Inquiry</h2>
+            <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-10 rounded-3xl border text-left shadow-sm">
+                <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Company Name</label><input type="text" name="company" required class="w-full p-3 border rounded-lg outline-none"></div>
+                <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Email Address</label><input type="email" name="_replyto" required class="w-full p-3 border rounded-lg outline-none"></div>
+                <div class="md:col-span-2"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Message</label><textarea name="message" rows="5" required placeholder="Quantity, Specification, etc." class="w-full p-3 border rounded-lg outline-none"></textarea></div>
                 <div class="md:col-span-2 text-center mt-4"><button type="submit" class="bg-blue-900 text-white px-16 py-4 rounded-full font-bold shadow-xl hover:bg-black transition-all uppercase tracking-widest">Submit Inquiry</button></div>
             </form>
         </div>
     </section>
 
-    <footer id="contact" class="bg-slate-900 text-white py-20 border-t border-slate-800">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16">
-                <div>
-                    <h2 class="text-3xl font-bold mb-8 uppercase tracking-widest text-blue-300">Contact Us</h2>
-                    <p class="text-xl font-bold mb-6">Korea Nanum Welfare Association (KNW) <br> ICT Business Division</p>
-                    <p class="text-sm text-gray-400">Email: nanoom@nanoom114.com | Tel: +82-44-863-3900</p>
-                </div>
-                <div class="bg-slate-800 p-10 rounded-3xl border border-slate-700 text-gray-300">
-                    <p>52, Bugeosil-gil, Jeonui-myeon, Sejong-si, Republic of Korea (Zip: 30004)</p>
-                    <div class="mt-8 pt-8 border-t border-slate-700 text-[10px] text-gray-500 tracking-widest uppercase">Copyright © 2026 KNW ICT Business Div. All Rights Reserved.</div>
-                </div>
-            </div>
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg font-bold text-blue-300 mb-2">Korea Nanum Welfare Association (KNW) ICT Division</p>
+            <p class="text-sm text-gray-400 mb-6">Email: nanoom@nanoom114.com | Tel: +82-44-863-3900</p>
+            <p class="text-[10px] text-gray-600 uppercase tracking-widest">Copyright © 2026 KNW ICT Business Div. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <div id="imgModal" onclick="this.style.display='none'">
+        <span class="close-text">Click anywhere to close</span>
+        <img id="modalImg">
+    </div>
+
+    <script>
+        function openModal(element) {
+            var modal = document.getElementById("imgModal");
+            var modalImg = document.getElementById("modalImg");
+            var clickedImg = element.getElementsByTagName('img')[0];
+            
+            modal.style.display = "flex";
+            modalImg.src = clickedImg.src;
+        }
+    </script>
 
 </body>
 </html>
