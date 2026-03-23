@@ -16,7 +16,7 @@
             background-size: cover; background-position: center; 
         }
 
-        /* 공통 이미지 컨테이너 스타일 */
+        /* 공통 이미지 컨테이너 */
         .img-wrapper {
             display: flex;
             justify-content: center;
@@ -24,41 +24,37 @@
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            overflow: hidden;
+            overflow: hidden; /* 영역 밖으로 나가는 것 방지 */
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
         }
         .img-wrapper:hover { transform: translateY(-5px); border-color: #1e3a8a; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-        
-        /* 돋보기 안내 */
-        .img-wrapper::after {
-            content: '🔍 Zoom';
-            position: absolute; bottom: 8px; right: 10px; font-size: 9px;
-            color: #64748b; background: rgba(255,255,255,0.8);
-            padding: 2px 6px; border-radius: 4px; opacity: 0; transition: opacity 0.3s;
-        }
-        .img-wrapper:hover::after { opacity: 1; }
 
-        /* 제품 이미지 규격 */
+        /* 제품 이미지 전용 (기존 유지) */
         .product-wrapper { height: 260px; padding: 15px; }
 
-        /* [핵심 수정] 4개 인증 로고 모두 동일하게 적용 - 글자 잘림 완벽 방지 */
+        /* [완벽 해결] 인증 로고 전용 박스 - 높이를 200px로 대폭 늘리고 여백을 30px로 강화 */
         .cert-wrapper { 
-            height: 180px; /* 로고가 충분히 크게 보일 수 있도록 높이 상향 */
-            padding: 20px; /* 상하좌우 여백을 주어 글자가 테두리에 닿지 않게 함 */
-            background-color: #fff;
+            height: 200px !important; 
+            padding: 30px !important; 
+            background-color: #ffffff;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
         }
 
-        /* 로고 이미지가 박스 안에서 전체 노출되도록 강제 설정 */
+        /* [핵심] 이미지가 박스보다 커도 '무조건' 안쪽으로 맞추는 설정 */
         .fit-img { 
-            width: 100%;
-            height: 100%;
-            object-fit: contain !important; /* 비율 유지하며 박스 안에 전체 이미지 표시 */
+            max-width: 100% !important; 
+            max-height: 100% !important; 
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important; /* 비율 유지하며 전체 노출 */
             display: block;
         }
 
-        /* 확대 모달(Lightbox) */
+        /* 확대 모달 */
         #imgModal {
             display: none; position: fixed; z-index: 9999; top: 0; left: 0;
             width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9);
@@ -77,10 +73,10 @@
                 <span class="text-xl font-bold leading-none uppercase tracking-tight">Eoulrim Copy Paper</span>
                 <span class="text-[10px] uppercase tracking-widest mt-1 opacity-70">KNW ICT Business Division</span>
             </div>
-            <nav class="hidden md:flex space-x-8 font-semibold text-xs uppercase tracking-wider">
-                <a href="#home" class="hover:text-blue-600 transition">Home</a>
-                <a href="#products" class="hover:text-blue-600 transition">Products</a>
-                <a href="#certifications" class="hover:text-blue-600 transition">Certifications</a>
+            <nav class="hidden md:flex space-x-8 font-semibold text-xs uppercase">
+                <a href="#home" class="hover:text-blue-600">Home</a>
+                <a href="#products" class="hover:text-blue-600">Products</a>
+                <a href="#certifications" class="hover:text-blue-600">Certifications</a>
                 <a href="#inquiry" class="bg-blue-900 text-white px-5 py-2 rounded shadow-sm hover:bg-black transition">Inquiry</a>
             </nav>
         </div>
@@ -90,7 +86,7 @@
         <div class="container mx-auto px-6">
             <h1 class="text-5xl md:text-7xl font-bold mb-4 uppercase tracking-tight italic">Eoulrim</h1>
             <p class="text-xl opacity-90 mb-8 font-light text-blue-50">Premium Quality & Social Value for Global Partners</p>
-            <a href="#inquiry" class="bg-blue-600 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">Send Inquiry Now</a>
+            <a href="#inquiry" class="bg-blue-600 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">Contact Us</a>
         </div>
     </section>
 
@@ -106,7 +102,7 @@
                 <div class="img-wrapper product-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/N6Mj3TqQ/image.jpg" class="fit-img"></div>
                 <div class="img-wrapper product-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/nqcr5fTy/image.jpg" class="fit-img"></div>
                 <div class="img-wrapper product-wrapper bg-blue-50 border-dashed border-blue-200 flex-col">
-                    <p class="text-blue-900 font-bold text-xs uppercase tracking-tight">Premium<br>Eco-Friendly<br>A4 Paper</p>
+                    <p class="text-blue-900 font-bold text-xs uppercase tracking-tight">Premium<br>Eco-Friendly<br>Paper</p>
                 </div>
             </div>
         </div>
@@ -116,10 +112,18 @@
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold mb-12 uppercase tracking-widest text-blue-900">Professional Certifications</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/5g11bWQ0/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/cKYFh2Fm/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/39Xm89YQ/image.jpg" class="fit-img"></div>
-                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)"><img src="https://i.ibb.co/mrWSwXtH/image.jpg" class="fit-img"></div>
+                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)">
+                    <img src="https://i.ibb.co/5g11bWQ0/image.jpg" class="fit-img" alt="Kkumdrae Certification">
+                </div>
+                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)">
+                    <img src="https://i.ibb.co/cKYFh2Fm/image.jpg" class="fit-img" alt="Social Enterprise Certification">
+                </div>
+                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)">
+                    <img src="https://i.ibb.co/39Xm89YQ/image.jpg" class="fit-img" alt="Standard Workplace for the Disabled">
+                </div>
+                <div class="img-wrapper cert-wrapper shadow-sm" onclick="openModal(this)">
+                    <img src="https://i.ibb.co/mrWSwXtH/image.jpg" class="fit-img" alt="Eco-Friendly Certification">
+                </div>
             </div>
         </div>
     </section>
@@ -130,7 +134,7 @@
             <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-50 p-10 rounded-3xl border text-left shadow-sm">
                 <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Company Name</label><input type="text" name="company" required class="w-full p-3 border rounded-lg outline-none focus:border-blue-900"></div>
                 <div><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Email Address</label><input type="email" name="_replyto" required class="w-full p-3 border rounded-lg outline-none focus:border-blue-900"></div>
-                <div class="md:col-span-2"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Message</label><textarea name="message" rows="5" required placeholder="Detailed specifications, quantity, etc." class="w-full p-3 border rounded-lg outline-none focus:border-blue-900"></textarea></div>
+                <div class="md:col-span-2"><label class="block text-xs font-bold mb-2 uppercase text-gray-500">Message</label><textarea name="message" rows="5" required placeholder="Quantity, Specification, etc." class="w-full p-3 border rounded-lg outline-none focus:border-blue-900"></textarea></div>
                 <div class="md:col-span-2 text-center mt-4"><button type="submit" class="bg-blue-900 text-white px-16 py-4 rounded-full font-bold shadow-xl hover:bg-black transition-all uppercase tracking-widest">Submit Inquiry</button></div>
             </form>
         </div>
@@ -158,6 +162,5 @@
             modalImg.src = clickedImg.src;
         }
     </script>
-
 </body>
 </html>
