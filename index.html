@@ -20,21 +20,47 @@
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .fit-img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        /* 인증 카드 (클릭 가능 스타일) */
+        /* 인증 카드 */
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
         .cert-card { 
             background: #fff; border-left: 5px solid #1e3a8a; border-radius: 8px; padding: 25px; 
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; border-left-width: 5px;
         }
-        .cert-card:hover { background: #f0f4ff; transform: scale(1.02); shadow: 0 10px 15px rgba(0,0,0,0.1); }
-        .cert-text { font-size: 1rem; font-weight: 700; color: #1e3a8a; }
-        .view-btn { font-size: 0.7rem; color: #3b82f6; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .cert-card:hover { background: #f8fafc; transform: translateY(-3px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        .cert-text { font-size: 1rem; font-weight: 700; color: #1e3a8a; line-height: 1.4; }
+        .view-btn { font-size: 0.75rem; color: #3b82f6; margin-top: 8px; font-weight: bold; text-transform: uppercase; }
 
-        /* [중요] 팝업(모달) 스타일 */
-        #certModal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); padding: 20px; box-sizing: border-box; }
-        .modal-content { max-width: 90%; max-height: 90%; margin: auto; display: block; object-fit: contain; border: 5px solid white; border-radius: 5px; }
-        .close-modal { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
+        /* [핵심 수정] 고해상도 인증서 팝업창 설정 */
+        #certModal { 
+            display: none; position: fixed; z-index: 10000; left: 0; top: 0; 
+            width: 100%; height: 100%; background: rgba(0,0,0,0.95); 
+            overflow-y: auto; /* 세로 스크롤 허용 */
+            padding: 40px 10px; box-sizing: border-box;
+        }
+        
+        .modal-wrapper {
+            width: 100%;
+            max-width: 800px; /* 인증서 가로폭 적정 수준 제한 */
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+
+        .modal-content { 
+            width: 100%; /* 가로를 꽉 채워 크게 보기 */
+            height: auto; /* 세로는 비율대로 길게 */
+            display: block;
+            border: 4px solid white; border-radius: 4px;
+            background-color: white;
+        }
+
+        .close-modal { 
+            position: fixed; top: 15px; right: 20px; color: white; 
+            font-size: 35px; font-weight: bold; cursor: pointer; z-index: 10001;
+            background: rgba(0,0,0,0.5); width: 45px; height: 45px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -51,36 +77,38 @@
     <section id="products" class="py-24 container mx-auto px-6">
         <h3 class="text-3xl font-bold text-blue-900 mb-12 uppercase tracking-widest">Product Portfolio</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="product-card shadow-sm"><img src="https://i.ibb.co/RTy2j12t/image.jpg" class="fit-img"></div>
-            <div class="product-card shadow-sm"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img"></div>
-            <div class="product-card shadow-sm"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="fit-img"></div>
-            <div class="product-card shadow-sm"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img"></div>
-            <div class="product-card shadow-sm"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="fit-img"></div>
-            <div class="product-card shadow-sm"><img src="https://i.ibb.co/N6Mj3TqQ/image.jpg" class="fit-img"></div>
-            <div class="product-card shadow-sm"><img src="https://i.ibb.co/nqcr5fTy/image.jpg" class="fit-img"></div>
-            <div class="product-card bg-blue-50 border-2 border-dashed border-blue-200"><p class="text-blue-900 font-bold text-xs uppercase">Global Standard A4 / A3 / B4</p></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/RTy2j12t/image.jpg" class="fit-img" alt="A4 Paper"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img" alt="A4 Paper Box"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="fit-img" alt="Premium Paper"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img" alt="Paper Pallet"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="fit-img" alt="Manufacturing"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/N6Mj3TqQ/image.jpg" class="fit-img" alt="Factory"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/nqcr5fTy/image.jpg" class="fit-img" alt="Product View"></div>
+            <div class="product-card bg-blue-50 border-2 border-dashed border-blue-200"><p class="text-blue-900 font-bold text-xs uppercase">Global Standard<br>A4 / A3 / B4</p></div>
         </div>
     </section>
 
     <section id="certifications" class="py-24 bg-slate-50 border-t border-b">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-6 text-center">
             <h3 class="text-3xl font-bold text-blue-900 mb-4 uppercase tracking-widest">Official Certifications</h3>
-            <p class="text-gray-500 mb-12 text-sm uppercase">Click to view the original certificate</p>
+            <p class="text-gray-500 mb-12 text-sm uppercase">Click to view high-resolution certificate</p>
             
             <div class="cert-grid">
-                <div class="cert-card" onclick="openModal('https://i.ibb.co/G46PNsKt/image.jpg')"><div><div class="cert-text">1. Social Enterprise</div><div class="view-btn">View Certificate →</div></div></div>
-                <div class="cert-card" onclick="openModal('https://i.ibb.co/mr8YKq41/image.jpg')"><div><div class="cert-text">2. Products by the Severely Disabled</div><div class="view-btn">View Certificate →</div></div></div>
-                <div class="cert-card" onclick="openModal('https://i.ibb.co/N237G6Xy/image.jpg')"><div><div class="cert-text">3. Standard Workplace for Disabled</div><div class="view-btn">View Certificate →</div></div></div>
-                <div class="cert-card" onclick="openModal('https://i.ibb.co/V07pyJGT/image.jpg')"><div><div class="cert-text">4. Eco-Friendly Certification</div><div class="view-btn">View Certificate →</div></div></div>
-                <div class="cert-card" onclick="openModal('https://i.ibb.co/TqJ9TTRP/image.jpg')"><div><div class="cert-text">5. Direct Production Certificate</div><div class="view-btn">View Certificate →</div></div></div>
-                <div class="cert-card" onclick="openModal('https://i.ibb.co/M59LBRq4/image.jpg')"><div><div class="cert-text">6. SMB Confirmation Letter</div><div class="view-btn">View Certificate →</div></div></div>
+                <div class="cert-card" onclick="openModal('https://i.ibb.co/G46PNsKt/image.jpg')"><span class="cert-text">1. Social Enterprise</span><span class="view-btn">Full View 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://i.ibb.co/mr8YKq41/image.jpg')"><span class="cert-text">2. Products by the Severely Disabled</span><span class="view-btn">Full View 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://i.ibb.co/N237G6Xy/image.jpg')"><span class="cert-text">3. Standard Workplace for Disabled</span><span class="view-btn">Full View 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://i.ibb.co/V07pyJGT/image.jpg')"><span class="cert-text">4. Eco-Friendly Certification</span><span class="view-btn">Full View 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://i.ibb.co/TqJ9TTRP/image.jpg')"><span class="cert-text">5. Direct Production Certificate</span><span class="view-btn">Full View 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://i.ibb.co/M59LBRq4/image.jpg')"><span class="cert-text">6. SMB Confirmation Letter</span><span class="view-btn">Full View 🔍</span></div>
             </div>
         </div>
     </section>
 
     <div id="certModal">
         <span class="close-modal" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImg">
+        <div class="modal-wrapper">
+            <img class="modal-content" id="modalImg">
+        </div>
     </div>
 
     <section id="inquiry" class="py-24 text-left bg-white">
@@ -99,7 +127,7 @@
                 <div class="md:w-2/3">
                     <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="bg-gray-50 p-10 rounded-3xl border shadow-sm">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><input type="text" name="company" placeholder="Company Name" required class="p-4 border rounded-xl outline-none"><input type="email" name="email" placeholder="Email Address" required class="p-4 border rounded-xl outline-none"></div>
-                        <textarea name="message" rows="5" placeholder="Inquiry Details..." required class="w-full p-4 mb-6 border rounded-xl outline-none"></textarea>
+                        <textarea name="message" rows="5" placeholder="Specify Quantity, Size, etc." required class="w-full p-4 mb-6 border rounded-xl outline-none"></textarea>
                         <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded-xl hover:bg-black transition-all uppercase tracking-widest shadow-xl">Send Global Inquiry</button>
                     </form>
                 </div>
@@ -113,11 +141,17 @@
 
     <script>
         function openModal(imgSrc) {
-            document.getElementById('certModal').style.display = "flex";
+            document.getElementById('certModal').style.display = "block";
             document.getElementById('modalImg').src = imgSrc;
+            // 팝업 열 때 상단으로 스크롤 고정
+            document.getElementById('certModal').scrollTop = 0;
+            // 본체 스크롤 금지
+            document.body.style.overflow = "hidden";
         }
         function closeModal() {
             document.getElementById('certModal').style.display = "none";
+            // 본체 스크롤 복구
+            document.body.style.overflow = "auto";
         }
         // 배경 클릭 시 닫기
         window.onclick = function(event) {
