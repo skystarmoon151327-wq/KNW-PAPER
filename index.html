@@ -15,46 +15,49 @@
             display: flex; align-items: center; justify-content: center; color: white;
         }
 
-        /* 사장님이 제안하신 이미지 컨테이너 구조 */
-        .cert-container {
-            display: flex;
-            flex-wrap: wrap; 
-            justify-content: center;
-            gap: 25px; 
-            padding: 40px 20px;
-            max-width: 1200px;
+        /* 인증 항목 텍스트 카드 스타일 */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 20px;
         }
 
-        .cert-item {
-            flex: 1 1 220px;
-            max-width: 280px;
+        .cert-card {
             background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            height: 180px;
+            border-left: 5px solid #1e3a8a;
+            border-right: 1px solid #e2e8f0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        /* 이미지 잘림 절대 방지 설정 */
-        .cert-item img {
-            max-width: 100% !important;
-            max-height: 100% !important;
-            height: auto !important;
-            width: auto !important;
-            object-fit: contain !important;
+        .cert-card:hover {
+            transform: translateY(-5px);
+            background: #f8fafc;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        .text-box {
-            padding: 20px;
-            font-size: 1.1em;
+        .cert-text {
+            font-size: 1.1rem;
             font-weight: 700;
             color: #1e3a8a;
-            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .sub-text {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 4px;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -67,10 +70,10 @@
                 <p class="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Korea Nanum Welfare Association</p>
             </div>
             <nav class="hidden md:flex space-x-8 font-bold text-xs uppercase">
-                <a href="#home" class="hover:text-blue-600">Home</a>
-                <a href="#products" class="hover:text-blue-600">Products</a>
-                <a href="#certifications" class="hover:text-blue-600">Certifications</a>
-                <a href="#inquiry" class="bg-blue-900 text-white px-5 py-2 rounded-full">Inquiry</a>
+                <a href="#home" class="hover:text-blue-600 transition">Home</a>
+                <a href="#products" class="hover:text-blue-600 transition">Products</a>
+                <a href="#certifications" class="hover:text-blue-600 transition">Certifications</a>
+                <a href="#inquiry" class="bg-blue-900 text-white px-5 py-2 rounded-full shadow-lg">Inquiry</a>
             </nav>
         </div>
     </header>
@@ -78,32 +81,64 @@
     <section id="home" class="hero-bg">
         <div>
             <h2 class="text-6xl font-bold mb-4 uppercase tracking-tighter" style="font-family: 'Montserrat';">EOULRIM</h2>
-            <p class="text-xl opacity-95">Premium Quality & Social Value for Global Partners</p>
+            <p class="text-xl opacity-95 max-w-2xl mx-auto leading-relaxed px-6">
+                Premium Quality Copy Paper & Social Value <br> Empowering Global Business Partners.
+            </p>
         </div>
     </section>
 
-    <section id="certifications" class="py-20 bg-gray-50">
-        <h3 class="text-3xl font-bold text-blue-900 mb-10 uppercase tracking-widest">Quality Certifications</h3>
-        
-        <div class="cert-container">
-            <div class="cert-item"><img src="https://i.ibb.co/5g11bWQ0/image.jpg" alt="Kkumdrae"></div>
-            <div class="cert-item"><img src="https://i.ibb.co/cKYFh2Fm/image.jpg" alt="Social Enterprise"></div>
-            <div class="cert-item"><img src="https://i.ibb.co/39Xm89YQ/image.jpg" alt="Standard Workplace"></div>
-            <div class="cert-item"><img src="https://i.ibb.co/mrWSwXtH/image.jpg" alt="Eco-Friendly"></div>
-        </div>
-
-        <div class="text-box">
-            Certified Products produced by the Severely Disabled<br>
-            <span class="text-blue-600 italic">"Kkumdrae"</span>
+    <section id="certifications" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl font-bold text-blue-900 mb-4 uppercase tracking-widest">Official Certifications</h3>
+            <p class="text-gray-500 mb-12 text-sm uppercase tracking-wider">Quality Assurance & Social Responsibility</p>
+            
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div>
+                        <div class="cert-text">1. Social Enterprise</div>
+                        <div class="sub-text">(Certified by Government)</div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div>
+                        <div class="cert-text">2. Products by the Severely Disabled</div>
+                        <div class="sub-text text-blue-600 font-bold">[Kkumdrae]</div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div>
+                        <div class="cert-text">3. Standard Workplace for Disabled</div>
+                        <div class="sub-text">Inclusive Employment Standards</div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div>
+                        <div class="cert-text">4. Eco-Friendly Certification</div>
+                        <div class="sub-text">Environmental Protection Standards</div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div>
+                        <div class="cert-text">5. Direct Production Certificate</div>
+                        <div class="sub-text">Verified Manufacturing Process</div>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div>
+                        <div class="cert-text">6. SMB Confirmation Letter</div>
+                        <div class="sub-text">Small & Medium Business Status</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="inquiry" class="py-24 text-left border-t">
+    <section id="inquiry" class="py-24 text-left border-t bg-white">
         <div class="container mx-auto px-6 max-w-6xl">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div>
-                    <h3 class="text-2xl font-bold mb-8 text-blue-900 uppercase">Contact Us</h3>
-                    <div class="space-y-6 text-sm text-gray-600 leading-relaxed">
+            <div class="flex flex-col md:flex-row gap-16">
+                <div class="md:w-1/3 space-y-8">
+                    <h3 class="text-2xl font-bold text-blue-900 uppercase tracking-wider border-b-2 border-blue-900 pb-2 inline-block">Contact Us</h3>
+                    <div class="space-y-6 text-sm text-gray-700 leading-relaxed">
                         <p><strong>Address:</strong><br>52, Bujusil-gil, Jeonui-myeon, Sejong Special Self-Governing City, Republic of Korea</p>
                         <p><strong>Tel:</strong> +82-44-863-3900</p>
                         <p><strong>Fax:</strong> +82-44-863-3930</p>
@@ -111,12 +146,16 @@
                         <p><strong>Business Reg No:</strong> 136-82-07856</p>
                     </div>
                 </div>
-                <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="bg-gray-50 p-10 rounded-3xl border shadow-sm">
-                    <input type="text" name="company" placeholder="Company Name" required class="w-full p-4 mb-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-900 transition">
-                    <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 mb-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-900 transition">
-                    <textarea name="message" rows="5" placeholder="Inquiry Details..." required class="w-full p-4 mb-6 border rounded-xl outline-none focus:ring-2 focus:ring-blue-900 transition"></textarea>
-                    <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded-xl hover:bg-black transition-all uppercase tracking-widest shadow-lg">Send Inquiry</button>
-                </form>
+                <div class="md:w-2/3">
+                    <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="bg-gray-50 p-10 rounded-3xl border shadow-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <input type="text" name="company" placeholder="Company Name" required class="p-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-900 transition">
+                            <input type="email" name="email" placeholder="Email Address" required class="p-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-900 transition">
+                        </div>
+                        <textarea name="message" rows="5" placeholder="Specify Quantity, Size (A4/A3), and Destination..." required class="w-full p-4 mb-6 border rounded-xl outline-none focus:ring-2 focus:ring-blue-900 transition"></textarea>
+                        <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded-xl hover:bg-black transition-all uppercase tracking-widest shadow-xl">Send Global Inquiry</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
