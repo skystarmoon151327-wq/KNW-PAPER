@@ -14,64 +14,86 @@
             background-size: cover; background-position: center; height: 500px;
             display: flex; align-items: center; justify-content: center; color: white;
         }
+
+        /* 제품 카드 */
         .product-card { height: 280px; padding: 15px; border: 1px solid #eee; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: #fff; transition: 0.3s; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .fit-img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
+        /* 인증 카드 그리드 */
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
         .cert-card { 
             background: #fff; border-left: 5px solid #1e3a8a; border-radius: 8px; padding: 25px; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; border-left-width: 5px;
         }
-        .cert-card:hover { background: #f8fafc; transform: translateY(-3px); }
+        .cert-card:hover { background: #f8fafc; transform: translateY(-3px); border-color: #3b82f6; }
         .cert-text { font-size: 1rem; font-weight: 700; color: #1e3a8a; }
+        .view-hint { font-size: 0.7rem; color: #3b82f6; margin-top: 5px; font-weight: bold; }
 
-        /* 팝업 스타일 */
+        /* 팝업(모달) 스타일 */
         #certModal { 
-            display: none; position: fixed; z-index: 10000; left: 0; top: 0; 
+            display: none; position: fixed; z-index: 99999; left: 0; top: 0; 
             width: 100%; height: 100%; background: rgba(0,0,0,0.95); 
             overflow-y: auto; padding: 40px 10px; box-sizing: border-box;
         }
         .modal-wrapper { width: 100%; max-width: 900px; margin: 0 auto; position: relative; }
         .modal-content { width: 100%; height: auto; border: 5px solid white; border-radius: 5px; background: white; }
-        .close-modal { position: fixed; top: 20px; right: 25px; color: white; font-size: 50px; font-weight: bold; cursor: pointer; z-index: 10001; }
+        .close-modal { position: fixed; top: 20px; right: 25px; color: white; font-size: 50px; font-weight: bold; cursor: pointer; z-index: 100000; }
     </style>
 </head>
 <body class="bg-white">
 
     <header class="bg-white shadow-sm sticky top-0 z-50 text-left">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div><h1 class="text-xl font-bold text-blue-900 leading-tight">KNW ICT</h1><p class="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Korea Nanum Welfare Association</p></div>
-            <nav class="hidden md:flex space-x-8 font-bold text-xs uppercase"><a href="#home">Home</a><a href="#products">Products</a><a href="#certifications">Certifications</a><a href="#inquiry" class="bg-blue-900 text-white px-5 py-2 rounded-full">Inquiry</a></nav>
+            <div>
+                <h1 class="text-xl font-bold text-blue-900 leading-tight">KNW ICT</h1>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest font-semibold">Korea Nanum Welfare Association</p>
+            </div>
+            <nav class="hidden md:flex space-x-8 font-bold text-xs uppercase">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#inquiry" class="bg-blue-900 text-white px-5 py-2 rounded-full shadow-md">Inquiry</a>
+            </nav>
         </div>
     </header>
 
-    <section id="home" class="hero-bg"><div><h2 class="text-6xl font-bold mb-4 uppercase tracking-tighter" style="font-family: 'Montserrat';">EOULRIM</h2><p class="text-xl opacity-95">Premium Quality & Social Value</p></div></section>
+    <section id="home" class="hero-bg">
+        <div>
+            <h2 class="text-6xl font-bold mb-4 uppercase tracking-tighter" style="font-family: 'Montserrat';">EOULRIM</h2>
+            <p class="text-xl opacity-95 tracking-wide">Premium Quality & Social Value Copy Paper</p>
+        </div>
+    </section>
 
     <section id="products" class="py-24 container mx-auto px-6">
-        <h3 class="text-3xl font-bold text-blue-900 mb-12 uppercase tracking-widest">Product Portfolio</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div class="product-card"><img src="https://i.ibb.co/RTy2j12t/image.jpg" class="fit-img"></div>
-            <div class="product-card"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img"></div>
-            <div class="product-card"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="fit-img"></div>
-            <div class="product-card"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img"></div>
-            <div class="product-card"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="fit-img"></div>
-            <div class="product-card"><img src="https://i.ibb.co/N6Mj3TqQ/image.jpg" class="fit-img"></div>
-            <div class="product-card"><img src="https://i.ibb.co/nqcr5fTy/image.jpg" class="fit-img"></div>
-            <div class="product-card bg-blue-50 border-2 border-dashed border-blue-200"><p class="text-blue-900 font-bold text-xs uppercase">Global Standard A4/A3/B4</p></div>
+        <h3 class="text-3xl font-bold text-blue-900 mb-12 uppercase tracking-widest text-center border-b-2 border-blue-50 pb-4 inline-block">Product Portfolio</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/RTy2j12t/image.jpg" class="fit-img"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/FLdkpt8K/image.jpg" class="fit-img"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/hR4Y1dLZ/image.jpg" class="fit-img"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/c9t5K1F/image.jpg" class="fit-img"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/svnrp8DP/image.jpg" class="fit-img"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/N6Mj3TqQ/image.jpg" class="fit-img"></div>
+            <div class="product-card shadow-sm"><img src="https://i.ibb.co/nqcr5fTy/image.jpg" class="fit-img"></div>
+            <div class="product-card bg-blue-50 border-2 border-dashed border-blue-200">
+                <p class="text-blue-900 font-bold text-xs uppercase">Global Standard<br>A4 / A3 / B4 Size</p>
+            </div>
         </div>
     </section>
 
     <section id="certifications" class="py-24 bg-slate-50 border-t border-b">
         <div class="container mx-auto px-6 text-center">
             <h3 class="text-3xl font-bold text-blue-900 mb-4 uppercase tracking-widest">Official Certifications</h3>
+            <p class="text-gray-500 mb-12 text-sm uppercase">Click to view high-resolution certificate</p>
+            
             <div class="cert-grid">
-                <div class="cert-card" onclick="smartOpenModal('cert1.jpg')"><span class="cert-text">1. Social Enterprise</span></div>
-                <div class="cert-card" onclick="smartOpenModal('cert2.jpg')"><span class="cert-text">2. Kkumdrae Certified</span></div>
-                <div class="cert-card" onclick="smartOpenModal('cert3.jpg')"><span class="cert-text">3. Standard Workplace</span></div>
-                <div class="cert-card" onclick="smartOpenModal('cert4.jpg')"><span class="cert-text">4. Eco-Friendly</span></div>
-                <div class="cert-card" onclick="smartOpenModal('cert5.jpg')"><span class="cert-text">5. Direct Production</span></div>
-                <div class="cert-card" onclick="smartOpenModal('cert6.jpg')"><span class="cert-text">6. SMB Confirmation</span></div>
+                <div class="cert-card" onclick="openModal('https://skystarmoon151327-wq.github.io/KNW-PAPER/certs/cert1.jpg')"><span class="cert-text">1. Social Enterprise</span><span class="view-hint">VIEW DETAILS 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://skystarmoon151327-wq.github.io/KNW-PAPER/certs/cert2.jpg')"><span class="cert-text">2. Kkumdrae Certified</span><span class="view-hint">VIEW DETAILS 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://skystarmoon151327-wq.github.io/KNW-PAPER/certs/cert3.jpg')"><span class="cert-text">3. Standard Workplace</span><span class="view-hint">VIEW DETAILS 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://skystarmoon151327-wq.github.io/KNW-PAPER/certs/cert4.jpg')"><span class="cert-text">4. Eco-Friendly</span><span class="view-hint">VIEW DETAILS 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://skystarmoon151327-wq.github.io/KNW-PAPER/certs/cert5.jpg')"><span class="cert-text">5. Direct Production</span><span class="view-hint">VIEW DETAILS 🔍</span></div>
+                <div class="cert-card" onclick="openModal('https://skystarmoon151327-wq.github.io/KNW-PAPER/certs/cert6.jpg')"><span class="cert-text">6. SMB Confirmation</span><span class="view-hint">VIEW DETAILS 🔍</span></div>
             </div>
         </div>
     </section>
@@ -89,16 +111,20 @@
                 <div class="md:w-1/3">
                     <h3 class="text-2xl font-bold text-blue-900 uppercase border-b-2 border-blue-900 pb-2 inline-block mb-8">Contact Us</h3>
                     <div class="space-y-6 text-sm">
-                        <p><strong>Address:</strong> 52, Bujusil-gil, Jeonui-myeon, Sejong City, Korea</p>
+                        <p><strong>Address:</strong><br>52, Bujusil-gil, Jeonui-myeon, Sejong Special Self-Governing City, Korea</p>
                         <p><strong>Tel:</strong> +82-44-863-3900 / <strong>Fax:</strong> +82-44-863-3930</p>
                         <p><strong>Email:</strong> nanoom@nanoom114.com</p>
+                        <p><strong>Business No:</strong> 136-82-07856</p>
                     </div>
                 </div>
                 <div class="md:w-2/3">
-                    <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="bg-gray-50 p-10 rounded-3xl border shadow-sm text-center">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"><input type="text" name="company" placeholder="Company Name" required class="p-4 border rounded-xl outline-none"><input type="email" name="email" placeholder="Email Address" required class="p-4 border rounded-xl outline-none"></div>
-                        <textarea name="message" rows="5" placeholder="Inquiry Details..." required class="w-full p-4 mb-6 border rounded-xl outline-none"></textarea>
-                        <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded-xl hover:bg-black transition-all uppercase tracking-widest shadow-xl">Send Inquiry</button>
+                    <form action="https://formspree.io/f/nanoom@nanoom114.com" method="POST" class="bg-gray-50 p-10 rounded-3xl border shadow-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <input type="text" name="company" placeholder="Company Name" required class="p-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-900">
+                            <input type="email" name="email" placeholder="Email Address" required class="p-4 border rounded-xl outline-none focus:ring-2 focus:ring-blue-900">
+                        </div>
+                        <textarea name="message" rows="5" placeholder="Specify Quantity, Size, Destination, etc." required class="w-full p-4 mb-6 border rounded-xl outline-none focus:ring-2 focus:ring-blue-900"></textarea>
+                        <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded-xl hover:bg-black transition-all uppercase tracking-widest shadow-lg">Send Inquiry</button>
                     </form>
                 </div>
             </div>
@@ -110,31 +136,12 @@
     </footer>
 
     <script>
-        // [핵심] 주소를 자동으로 계산하는 스마트 모달 함수
-        function smartOpenModal(fileName) {
-            const modal = document.getElementById('certModal');
-            const modalImg = document.getElementById('modalImg');
-            
-            // 현재 홈페이지 주소를 가져와서 끝에 certs/파일명.jpg를 붙입니다.
-            let currentPath = window.location.href.split('index.html')[0];
-            if (!currentPath.endsWith('/')) { currentPath += '/'; }
-            
-            const finalPath = currentPath + "certs/" + fileName;
-            
-            modal.style.display = "block";
-            modalImg.src = finalPath;
-            
-            // 보험용: 소문자로 실패하면 대문자 .JPG 시도
-            modalImg.onerror = function() {
-                if (this.src.includes('.jpg')) {
-                    this.src = this.src.replace('.jpg', '.JPG');
-                }
-            };
-
+        function openModal(imgSrc) {
+            document.getElementById('certModal').style.display = "block";
+            document.getElementById('modalImg').src = imgSrc;
             document.getElementById('certModal').scrollTop = 0;
             document.body.style.overflow = "hidden";
         }
-
         function closeModal() {
             document.getElementById('certModal').style.display = "none";
             document.body.style.overflow = "auto";
